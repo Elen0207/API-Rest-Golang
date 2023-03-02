@@ -3,10 +3,11 @@ package routes
 import (
 	"log"
 	"net/http"
-
+	
 	"github.com/Elen0207/API-Rest-Golang/controllers"
 	"github.com/Elen0207/API-Rest-Golang/middleware"
 	"github.com/gorilla/mux"
+	"github.com/gorilla/handlers"
 )
 
 func HandleResquest() {
@@ -18,5 +19,5 @@ func HandleResquest() {
 	r.HandleFunc("/api/personalidades", controllers.CriaUmaNovaPersonalidade).Methods("Post")
 	r.HandleFunc("/api/personalidades/{id}", controllers.DeletaUmaPersonalidade).Methods("Delete")
 	r.HandleFunc("/api/personalidades/{id}", controllers.EditaPersonalidade).Methods("Put")
-	log.Fatal(http.ListenAndServe(":8000", r))
+	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(handlers.AllowedOrigins([]string{"*"}))(r)))
 }
