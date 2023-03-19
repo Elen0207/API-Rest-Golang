@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/elencdeo/api-go-gin/database"
-	"github.com/elencdeo/api-go-gin/routes"
+	"github.com/Elen0207/API-Rest-Golang/database"
+	"github.com/Elen0207/API-Rest-Golang/routes"
 )
 
 func main() {
 	database.ConectaComBancoDeDados()
-	routes.HandleRequests()
+	routes.HandleRequest()
 }
